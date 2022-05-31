@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.user.CareerMapper">
+    <select id="getCareerInfo" resultType="com.example.demo.model.user.CareerDto" parameterType="String">
+
+        select ca_id, e_id, a.e_name, academic_level, department,ca_name, ca_description
+        from (select e_name, academic_level, department
+              from employee
+              where e_id = #{e_id}) as a, career
+        where e_id = #{e_id}
+
+    </select>
+
+</mapper>

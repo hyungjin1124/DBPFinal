@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic}"
+>
+<th:block layout:fragment="title">
+    <title>This page is a list page</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="table-responsive clearfix">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+
+                <th>사번</th>
+                <th>이름</th>
+                <th>학력</th>
+                <th>부서</th>
+
+                <th>경력</th>
+                <th>경력내용</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elem: ${Career}">
+                <td th:text="${elem.e_id}"></td>
+                <td th:text="${elem.e_name}"></td>
+                <td th:text="${elem.academic_level}"></td>
+                <td th:text="${elem.department}"></td>
+<!--                <td th:if="${elem.department.equals('00')}" th:text="개발자"></td>-->
+<!--                <td th:if="${elem.department.equals('11')}" th:text="경영관리"></td>-->
+<!--                <td th:if="${elem.department.equals('22')}" th:text="연구개발"></td>-->
+<!--                <td th:if="${elem.department.equals('33')}" th:text="마케팅"></td>-->
+
+                <td  th:text="${elem.ca_name}"></td>
+                <td  th:text="${elem.ca_description}"></td>
+            <tr>
+            </tbody>
+        </table>
+
+<hr>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>언어</th>
+                <th>프레임워크</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elem: ${SkillSet}">
+                <td  th:text="${elem.s_language}"></td>
+                <td  th:text="${elem.s_framework}"></td>
+            <tr>
+            </tbody>
+        </table>
+
+
+
+<!--        <table class="table table-hover">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th> 참여한 프로젝트 id</th>-->
+<!--                <th> 프로젝트 description </th>-->
+<!--                <th> 시작날짜 </th>-->
+<!--                <th> 종료날짜 </th>-->
+<!--                <th> 역할 </th>-->
+
+
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="elem: ${Participant}">-->
+<!--                <td  th:text="${elem.pr_id}"></td>-->
+<!--                <td  th:text="${elem.p_description}"></td>-->
+<!--                <td  th:text="${elem.p_start_date}"></td>-->
+<!--                <td  th:text="${elem.p_end_date}"></td>-->
+<!--                <td  th:text="${elem.p_role}"></td>-->
+
+<!--            <tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+
+    </div>
+</th:block>
+</html>

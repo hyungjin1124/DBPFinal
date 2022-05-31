@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/base}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>회원가입</title>
+    <style>
+        body, html {
+            height: 100%;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="page_content" id="page_content">
+    <div class="container">
+        <br>
+        <br>
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <form th:action="@{/user/save}" method="post" id="signUp" >
+                                    <h2>회원가입</h2>
+                                    <div>
+                                        <label for="e_name">이름</label><br>
+                                        <input type="text"  id="e_name" name="e_name" class="form-control" maxlength="32" pattern=".{2,32}" required
+                                               oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9-_().]/g, '').replace(/(\..*)\./g, '');">
+                                    </div>
+                                    <div>
+                                        <label >주민등록번호</label><br>
+                                        <input type="text"  id="resident_num" name="resident_num" class="form-control" maxlength="32" pattern=".{2,32}" required
+                                               oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9-_().]/g, '').replace(/(\..*)\./g, '');">
+                                    </div>
+                                    <div>
+                                        <label >학력</label><br>
+<!--                                        <input type="text"  id="academic_level" name="academic_level" class="form-control" maxlength="32" pattern=".{2,32}" required-->
+<!--                                               oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9-_().]/g, '').replace(/(\..*)\./g, '');">-->
+                                        <select name="academic_level" id="academic_level" class="form-control">
+                                            <option value="고졸">고졸</option>
+                                            <option value="전문학사">전문학사(2-3년제)</option>
+                                            <option value="학사" >학사(4년제)</option>
+                                            <option value="석사" >석사(대학원 석사)</option>
+                                            <option value="박사" >박사(대학원 박사)</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="role">직급</label><br>
+                                        <select name="role" id="role" class="form-control">
+                                            <option value="1">사원</option>
+                                            <option value="2">경영진</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label >아이디</label><br>
+                                        <input type="text"  id="id" name="id" class="form-control" maxlength="20">
+                                    </div>
+
+                                    <div>
+                                        <label >비밀번호</label><br>
+                                        <input type="text"  id="password" name="password" class="form-control" maxlength="20">
+                                    </div>
+
+                                    <div>
+                                        <label for="department">부서</label><br>
+                                        <select name="department" id="department" class="form-control">
+                                            <option value="개발자" >개발자</option>
+                                            <option value="경영관리">경영관리</option>
+                                            <option value="연구개발">연구개발</option>
+                                            <option value="마케팅" >마케팅</option>
+                                        </select>
+                                    </div>
+                                    <br><br>
+                                    <input type="submit" th:value="회원가입" onclick="alert('회원가입 성공!');" style="cursor:pointer">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic}"
+>
+<th:block layout:fragment="title">
+    <title>사원추가 페이지</title>
+</th:block>
+
+<th:block layout:fragment="search">
+    <div th:replace="fragments/common :: search"></div>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="table-responsive clearfix">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>사번</th>
+                <th>이름</th>
+                <th>학력</th>
+                <th>부서</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${not #lists.isEmpty( employeeList )}" th:each="row : ${employeeList}">
+
+                <td>
+                    <input type="hidden" name="nameChk"  id="nameChk" value="<%=request.getParameter('nameChk')%>" />
+                    <input type="checkbox" class="emChoose" th:id="|emChoose${row.e_id}|" th:value="${row.e_id}+ ' ' +${row.e_name}">
+                    <!--                    <select name="emChoose" multiple>-->
+                    <!--                        <option class="emChoose" th:id="|emChoose${row.e_id}|" th:value="${row.e_id}">선택</option>-->
+                    <!--                    </select>-->
+                    <!--                    <button class="emChoose"  th:value="${row.e_id}" th:id="|emChoose${row.e_id}|" >선택</button>-->
+                </td>
+
+                <td th:text="${row.e_id}"></td>
+                <td th:text="${row.e_name}"></td>
+                <td th:text="${row.academic_level}"></td>
+                <td th:text="${row.department}"></td>
+<!--                <td th:if="${row.department.equals('00')}" th:text="개발자"></td>-->
+<!--                <td th:if="${row.department.equals('11')}" th:text="경영관리"></td>-->
+<!--                <td th:if="${row.department.equals('22')}" th:text="연구개발"></td>-->
+<!--                <td th:if="${row.department.equals('33')}" th:text="마케팅"></td>-->
+
+
+            </tr>
+
+            <tr th:unless="${not #lists.isEmpty( employeeList )}">
+                <td colspan="5">조회된 결과가 없습니다.</td>
+            </tr>
+            </tbody>
+        </table>
+<!--        <form th:action="@{/project/projectInsert}" th:method="POST" id="pop">-->
+            <input th:type="hidden" id="popIn" name="e_id" type="text">
+            <!--               <input   type="submit" th:value="선택완료" onclick="submitData()">-->
+            <button id="pp" value="s">선택완료</button>
+<!--        </form>-->
+
+
+        <th:block layout:fragment="paging">
+
+            <nav th:replace="fragments/common :: pagination"></nav>
+        </th:block>
+    </div>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/projectInsert.js}"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // URLSearchParams 객체
+        // url = window.location.href;
+        // const urlParams = url.searchParams;
+        //
+        // // URLSearchParams.get()
+        // document.write(urlParams.get('pram1') + '<br>');
+        // console.log(window.location.search);
+
+        let query = window.location.search;
+
+        console.log(query);
+        n = query.replace("?n=","");
+        console.log(n);
+
+        var participa = [];
+
+        $('.emChoose').on('click', (e) => {
+
+            participa.push(e.target.value);
+
+            participain = [...new Set(participa)];
+            console.log(participain);
+            //
+            document.getElementById("popIn").value = participain;
+            // participainLen = participain.length;
+
+
+            sepraParti = participain[0].split(" ");
+            ee_id =sepraParti[0];
+            ee_name = sepraParti[1];
+
+            console.log(ee_id);
+            console.log(ee_name);
+
+        })
+
+        $(document).on('click', '#pp', function () {
+
+            // function fn_selected_cd(Name) {
+            //     if($("#nameChk").val() == "AAA"){  //jQuery로 value사용하여 확인
+            //         //부모창에 jeon이라는 ID를 갖는 input에 파라미터 Name을 대입
+            //         opener.document.getElementById("jeon").value = Name;
+            //     }
+            // }
+
+
+          //   popupButtonId.push(e.target.id);
+          //   aa = popupButtonId[0].replace('add','');
+          //   console.log("popup"+aa);
+          //
+          //
+          // console.log(aa);
+          //   popupButtonId =[];
+
+
+            $(opener.document).find('#e_name'+n).val(ee_name);
+            $(opener.document).find('#e_id'+n).val(ee_id);
+
+
+            window.close("employee/list", "팝업 테스트", "width=800, height=600, top=20, left=40");
+        });
+
+        //검색파트
+        function movePage(uri, queryString) {
+            location.href = uri + queryString;
+        }
+
+        function searchEmployee(form) {
+            /*[- 드롭다운이 아닌 메인 검색 키워드로 검색했을 때 -]*/
+            if (isEmpty(form) == true) {
+                var searchKeyword = document.getElementById("mainSearchKeyword");
+                if (isEmpty(searchKeyword.value) == true) {
+                    alert("키워드를 입력해 주세요.");
+                    searchKeyword.focus();
+                    return false;
+                }
+
+                form = document.getElementById("searchForm");
+                form.searchKeyword.value = searchKeyword.value;
+                form.submit();
+            }
+
+
+            if (isEmpty(form.searchKeyword.value) == true) {
+                alert("키워드를 입력해 주세요.");
+                form.searchKeyword.focus();
+                return false;
+            }
+        }
+
+        /*[- end of function -]*/
+        /*]]>*/
+    </script>
+</th:block>
+</html>
