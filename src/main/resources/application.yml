@@ -13,7 +13,7 @@ spring:
     url: jdbc:mysql://localhost:3306/company_affair?serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true
 
     username: root
-    password: gudwls5864
+    password: Abcd123@
 #  main:
 #    allow-bean-definition-overriding: true
 #  thymeleaf:
