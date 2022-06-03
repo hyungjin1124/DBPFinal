@@ -34,3 +34,12 @@ $(() => {
     }
   }
 });
+
+  let pr_id = $("#btn-remove").val();
+  $(function(){
+  $('#btn-remove').click(function(){
+    if(confirm("프로젝트를 삭제하시겠습니까?")){
+      self.location.href = "/project/projectDelete?pr_id=" + pr_id;
+    }
+  });
+});

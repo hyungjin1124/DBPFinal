@@ -109,5 +109,17 @@
         WHERE pr_id = #{pr_id}
         AND pr_termination = 'N'
     </select>
+
+    <delete id="deleteProject" parameterType="String">
+        DELETE
+        FROM project
+        WHERE pr_id = #{pr_id}
+    </delete>
+
+    <delete id="deleteParticipant" parameterType="String">
+        DELETE
+        FROM participant
+        WHERE pr_id = #{pr_id}
+    </delete>
 </mapper>
 

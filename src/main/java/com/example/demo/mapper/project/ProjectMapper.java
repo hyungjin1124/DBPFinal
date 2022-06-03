@@ -30,6 +30,10 @@ public interface ProjectMapper {
 
     void updateProjectT(ProjectTDescr projectTDescr);
 
+    void deleteProject(String pr_id);
+
+    void deleteParticipant(String pr_id);
+
     void insertParticipant(Participant participant);
 
     // project 리스트 받아오기
