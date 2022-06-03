@@ -59,6 +59,11 @@ public class ProjectService {
         projectMapper.updateProject(projectDescr);
     }
 
+    public static void deleteProject(String pr_id) {
+        projectMapper.deleteParticipant(pr_id);
+        projectMapper.deleteProject(pr_id);
+    }
+
     public static void updateProjectT(ProjectTDescr projectDescr) {
 
         projectMapper.updateProjectT(projectDescr);

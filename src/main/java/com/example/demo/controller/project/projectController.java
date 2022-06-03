@@ -193,9 +193,26 @@ public class projectController {
 
     @PostMapping(value = "/projectUpdate/{pr_id}")
     public String updateProject(ProjectDescr projectDescr, @PathVariable String pr_id){
+        logger.info("Update complete!");
         projectService.updateProject(projectDescr);
         return "redirect:/main";
     }
+
+    @RequestMapping(value = "/projectDelete", method = RequestMethod.GET)
+    public String deleteProject(@RequestParam("pr_id") String pr_id){
+        logger.info("delete");
+        logger.info("pr_id: {} ", pr_id);
+        projectService.deleteProject(pr_id);
+        return "redirect:/main";
+    }
+
+
+//    @PostMapping(value = "/projectDelete/{pr_id}")
+//    public String deleteProject(@PathVariable String pr_id){
+////        projectService.deleteProject(pr_id);
+//        logger.info("{} Deletion Success!!", pr_id);
+//        return "redirect:/main";
+//    }
 
 }
 

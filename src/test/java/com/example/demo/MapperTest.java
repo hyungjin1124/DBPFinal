@@ -50,6 +50,13 @@ public class MapperTest {
     }
 
     @Test
+    public void testOfDeleteProject() {
+        System.out.println("test start");
+        projectMapper.deleteProject("56");
+        System.out.println("test end");
+    }
+
+    @Test
     public void testOfInsertParticipant() {
         Participant participant = new Participant();
 

@@ -1,8 +1,8 @@
-import com.example.demo.mapper.user.UserMapper;
+package com.example.demo;
+
 import com.example.demo.model.user.employeeDto;
 import com.example.demo.service.EmployeeService;
-import com.example.demo.service.EmployeeServicelmpl;
-import com.example.demo.service.user.UserService;
+import com.example.demo.service.project.ProjectService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ServiceTest {
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private ProjectService projectService;
 
     @Test
     public void testOfGetEmployeeInfo() {
@@ -27,5 +30,12 @@ public class ServiceTest {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testOfDeleteProject() {
+        System.out.println("start test");
+        projectService.deleteProject("56");
+        System.out.println("삭제 성공");
     }
 }
