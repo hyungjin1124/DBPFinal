@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.example.demo.service.EmployeeService;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
@@ -111,4 +113,34 @@ public class mainController {
 
         return "myPage";
     }
+    @GetMapping("/findId")
+    public String findId (Model model) {
+
+        return "findId";
+    }
+
+    @GetMapping("/findPW")
+    public String findPW (Model model) {
+
+        return "findPW";
+    }
+    @GetMapping("/findIdR")
+    public String findIDR (Model model, String e_name, String resident_num) {
+//        getUserId 서비스 호출해야지 UserService
+
+        employeeDto employeeDto = userService.getUserId(e_name, resident_num);
+        String userId = employeeDto.getId().toString();
+        model.addAttribute("uuserID", userId);
+        logger.info("userID: {}", userId);
+        return "findIdResult";
+    }
+    @GetMapping("/findPWR")
+    public String findPWR (Model model, String id, String resident_num) {
+        employeeDto employeeDto = userService.getUserPW(id, resident_num);
+        String userPW = employeeDto.getPassword().toString();
+        model.addAttribute("uuserPW", userPW);
+        logger.info("userPW: {}", userPW);
+        return "findPWResult";
+    }
+
 }

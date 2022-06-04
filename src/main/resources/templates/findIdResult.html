@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic}"
+>
+<th:block layout:fragment="title">
+    <title>당신의 아이디입니다.</title>
+</th:block>
+<th:block layout:fragment="content">
+    <div>
+
+        <h3>아이디는 </h3>
+            <br>
+        <h3 th:text="${uuserID}"></h3>
+        <h3>입니다. </h3>
+
+
+    </div>
+
+</th:block>
+</html>

@@ -104,5 +104,14 @@
         where e_id = #{e_id}
     </select>
 
-
+    <select id="getUserId" resultType="employeeDto" statementType="CALLABLE">
+        select id
+        from employee
+        where e_name = #{e_name} and resident_num = #{resident_num}
+    </select>
+    <select id="getUserPW" resultType="employeeDto" statementType="CALLABLE">
+        select password
+        from employee
+        where id = #{id} and resident_num = #{resident_num}
+    </select>
 </mapper>

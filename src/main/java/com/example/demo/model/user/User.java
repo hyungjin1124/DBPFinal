@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class User extends ProcedureOutMsg implements UserDetails, Serializable {
+public class User implements UserDetails, Serializable {
     Logger logger = LoggerFactory.getLogger("User");
     private static final String ROLE_PREFIX = "ROLE_";
 

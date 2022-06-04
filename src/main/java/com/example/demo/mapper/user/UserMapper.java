@@ -22,7 +22,8 @@ public interface UserMapper {
     //회원 정보 조회(마이페이지, 통계페이지)
     public employeeDto getUserInfo(String userID);
     public employeeDto getEmployeeInfo(String e_name);
-
+    public employeeDto getUserId(String e_name, String resident_num);
+    public employeeDto getUserPW(String id, String resident_num);
     public int getEmployeeTotalCount(employeeDto params);
 
     // employee 리스트 받아오기

@@ -2,7 +2,6 @@ package com.example.demo.service.user;
 
 import com.example.demo.mapper.user.UserMapper;
 import com.example.demo.model.user.Role;
-import com.example.demo.model.user.SkillSetDto;
 import com.example.demo.model.user.User;
 import com.example.demo.model.user.employeeDto;
 import org.slf4j.Logger;
@@ -37,6 +36,15 @@ public class UserService {
         return userMapper.getUserInfo(userID);
     }
 
+    public static employeeDto getUserId(String e_name, String resident_num) {
+        logger.info("e_name: {}", e_name);
+        logger.info("resident_num: {}", resident_num);
+        return userMapper.getUserId(e_name, resident_num);
+    }
+    public static employeeDto getUserPW(String id, String resident_num) {
+
+        return userMapper.getUserPW(id, resident_num);
+    }
 //    회원 정보 수정
     public static void updateUserInfo(employeeDto employeeDto) {userMapper.updateUserInfo(employeeDto);}
 

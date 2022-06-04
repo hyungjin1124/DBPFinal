@@ -1,33 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-<!--      xmlns="http://www.w3.org/1999/xhtml"-->
-<!--      xmlns:th="http://www.thymeleaf.org"-->
-<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
-<!--      layout:decorate="~{/layout/base}"-->
-<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
-<!--<head>-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    &lt;!&ndash;    <meta name="context-path" th:content="@{/}"/>&ndash;&gt;-->
-<!--    <meta th:name="_csrf_token" th:content="${_csrf.token}"/>-->
-<!--    <meta th:name="_csrf_header_name" th:content="${_csrf.headerName}"/>-->
-
-<!--    <link rel="stylesheet" th:href="@{/ext/bootstrap/css/bootstrap.min.css}">-->
-<!--    <link rel="stylesheet" th:href="@{/ext/font-awesome/css/all.min.css}">-->
-<!--    <link rel="stylesheet" th:href="@{/ext/sweetalert2/css/sweetalert2.min.css}">-->
-<!--    <link rel="stylesheet" th:href="@{/css/common/common.css}">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div layout:fragment="page_content" id="page_content">-->
-<!--<h4>-->
-<!--    <span th:text="${userName}"></span>-->
-<!--    <span th:text="${userEid}"></span>-->
-<!--    <span>님 프로필</span>-->
-<!--</h4>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -37,12 +7,6 @@
     <title>This page is a list page</title>
 </th:block>
 
-<!--<th:block layout:fragment="search">-->
-<!--    <div th:replace="fragments/common :: search"></div>-->
-<!--</th:block>-->
-<!--<form th:id="modifyform" th:action="@{/user/editMyPage}" th:method="post">-->
-
-<!--</form>-->
 <th:block layout:fragment="content">
     <div class="table-responsive clearfix">
         <table class="table table-hover">
@@ -53,7 +17,6 @@
             </tr>
             </thead>
             <tbody>
-<!--            <tr th:if="${not #lists.isEmpty(  )}" th:each="row : ${employeeList}">-->
             <tr>
                 <td th:text="사번"></td>
                 <td th:text="${user.getE_id()}"></td>
