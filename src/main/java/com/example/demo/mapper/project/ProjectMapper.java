@@ -16,6 +16,7 @@ public interface ProjectMapper {
 
 
     List<ProjectDescr> getAProject(ProjectDescr projectDescr);
+    List<ProjectDescr> getAInProject(String userID);
 
     List<ProjectDescr> selectNTProject();
 

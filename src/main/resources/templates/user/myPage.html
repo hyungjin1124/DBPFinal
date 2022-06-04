@@ -78,5 +78,29 @@
         </table>
         <a href="/user/editMyPage" role="button" class="btn btn-primary">수정하기</a>
     </div>
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>프로젝트 이름</th>
+                <th>시작일</th>
+                <th>종료일</th>
+                <th>pm</th>
+                <th>고객사</th>
+                <th>수주액</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elem: ${AInProject}">
+                <td th:text="${elem.pr_name}"></td>
+                <td th:text="${elem.pr_start_date}"></td>
+                <td th:text="${elem.pr_end_date}"></td>
+                <td th:text="${elem.pr_pm}"></td>
+                <td th:text="${elem.pr_client}"></td>
+                <td th:text="${elem.pr_price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </th:block>
 </html>

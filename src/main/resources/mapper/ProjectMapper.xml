@@ -121,5 +121,14 @@
         FROM participant
         WHERE pr_id = #{pr_id}
     </delete>
+
+    <select id="getAInProject" resultType="ProjectDescr" parameterType="String" statementType="CALLABLE">
+        select cp.pr_id, cp.pr_name, cp.pr_start_date, cp.pr_end_date, cp.pr_pm, cp.pr_client, cp.pr_price
+        from (select pr_id
+              from company_affair.participant
+              where e_id = #{e_id})as pp, company_affair.project as cp
+        where pp.pr_id = cp.pr_id;
+    </select>
+
 </mapper>
 

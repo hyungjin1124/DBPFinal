@@ -32,7 +32,10 @@ public class ProjectService {
         return projectMapper.getAProject(projectDescr);
 
     }
+    public static List<ProjectDescr> getAInProject(String userID) {
+        return projectMapper.getAInProject(userID);
 
+    }
     public static ProjectDescr getProjectById(String pr_id) {
         return projectMapper.getProjectById(pr_id);
 

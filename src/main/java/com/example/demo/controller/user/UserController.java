@@ -1,11 +1,13 @@
 package com.example.demo.controller.user;
 
+import com.example.demo.model.project.ProjectDescr;
 import com.example.demo.model.user.CareerDto;
 import com.example.demo.model.user.SkillSetDto;
 import com.example.demo.model.user.User;
 import com.example.demo.model.user.employeeDto;
 import com.example.demo.service.CareerService;
 import com.example.demo.service.SkillSetService;
+import com.example.demo.service.project.ProjectService;
 import com.example.demo.service.user.UserService;
 //import org.mybatis.logging.Logger;
 //import org.mybatis.logging.LoggerFactory;
@@ -14,6 +16,7 @@ import com.example.demo.service.security.UserDetailServiceImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.slf4j.Logger;
@@ -34,7 +37,7 @@ public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
     private static UserDetailServiceImp userDetailServiceImp;
-
+    private static ProjectService projectService;
     @Autowired
     private SkillSetService skillSetService;
 
@@ -140,6 +143,12 @@ public class UserController {
             }
         }
         model.addAttribute("caDescList", caDescList);
+
+        List<ProjectDescr> AInProject = projectService.getAInProject(userEid);
+        logger.info("e_id!!!!!!!!!! {}", userEid);
+        model.addAttribute("AInProject", AInProject);
+
+
 
         return "user/myPage";
     }
